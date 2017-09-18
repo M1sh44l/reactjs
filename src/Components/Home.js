@@ -40,6 +40,12 @@ class Home extends Component {
     console.log(projects);
   }
 
+  handleDeleteProject(id){
+    let projects = this.state.projects;
+    let index = projects.findIndex(project => project.id === id);
+    projects.splice(index, 1);
+    this.setState({projects:projects});
+  }
 
   render() {
     const navBar = (
@@ -59,7 +65,7 @@ class Home extends Component {
         <BrowserRouter>
         <Grid>
           <Panel>
-            <Projects test="Hello World!" projects={this.state.projects} />
+            <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} />
           </Panel>
           <Panel>
             <AddProject addProject={this.handleAddProject.bind(this)} />

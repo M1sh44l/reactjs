@@ -7,6 +7,7 @@ import {BrowserRouter, Route, Link} from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap';
 import Home from './Components/Home';
 import API from './Components/API';
+import Posts from './Components/Posts';
 
 
 class App extends Component {
@@ -15,22 +16,31 @@ class App extends Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">My Projects</a>
+              <a href="#">My Projects</a>
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
-            <NavItem href="/Home">Home</NavItem>
-            <NavItem href="/api">API</NavItem>
+            <LinkContainer exact to="/">
+            <NavItem>Home</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/Api">
+            <NavItem>API</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/Posts">
+            <NavItem>Posts</NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar>
     );
       return (
         <BrowserRouter>
         <Grid>
-        {navBar}
-            My App
-            <Home />
-            <API />
+          <Grid>
+            {navBar}
+          </Grid>
+          <Route exact path="/" render={() => <Home />} />
+          <Route exact path="/Api" render={() => <API />} />
+          <Route exact path="/Posts" render={() => <Posts />} />
         </Grid>
         </BrowserRouter>
       );
