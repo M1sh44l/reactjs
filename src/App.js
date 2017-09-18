@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Projects from './Components/Projects';
-import AddProject from './Components/AddProject';
 // import ImageProject from './Components/ImageProject';
 import uuid from 'uuid';
 // import ListProjects from './Components/ListProjects';
@@ -9,6 +7,7 @@ import Todos from './Components/Todos';
 import {Nav, Navbar, NavItem, Grid, Panel} from 'react-bootstrap';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap';
+import Home from './Components/Home';
 
 
 class App extends Component {
@@ -31,33 +30,6 @@ class App extends Component {
 
   componentDidMount(){
     this.getTodos();
-  }
-
-  componentWillMount() {
-    this.setState({projects:[
-      {
-        id: uuid.v4(),
-        title: "Business Website",
-        category: "Web Design",
-      },
-      {
-        id: uuid.v4(),
-        title: "Social App",
-        category: "Mobile Development",
-      },
-      {
-        id: uuid.v4(),
-        title: "E-Commerce Shopping Cart",
-        category: "Web Development",
-      }
-    ]})
-  }
-
-  handleAddProject(project){
-    let projects = this.state.projects;
-    projects.push(project);
-    this.setState({projects:projects});
-    console.log(projects);
   }
 
   //this below function is for the checkbox
@@ -87,12 +59,8 @@ class App extends Component {
         {navBar}
           My App
           <Panel>
-          <Projects test="Hello World!" projects={this.state.projects}/>
+            <Home />
           </Panel>
-          <Panel>
-          <AddProject addProject={this.handleAddProject.bind(this)} />
-          </Panel>
-          {/* <ImageProject /> */}
           <Panel>
           <Todos todos={this.state.todos} onChange={this.handleChange.bind(this)}/>
           </Panel>
