@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { observer } from 'mobx-react';
 
 
-class ProjectItem extends Component {
+const ProjectItem = observer(class ProjectItem extends Component {
   deleteProject(id){
     this.props.onDelete(id);
   }
@@ -12,6 +13,6 @@ class ProjectItem extends Component {
         </li>
           );
         }
-    }
+    })
 
 export default ProjectItem;

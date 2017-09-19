@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import TodoItems from './TodoItems';
+import { observer } from 'mobx-react';
 
-class Todos extends Component {
+
+const Todos = observer(class Todos extends Component {
   //this below function is for the checkbox
   onChange(id){
     this.props.onChange(id);
@@ -29,6 +31,6 @@ class Todos extends Component {
       </div>
     );
   }
-}
+})
 
 export default Todos;

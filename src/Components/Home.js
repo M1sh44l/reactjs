@@ -5,9 +5,10 @@ import uuid from 'uuid';
 import {Nav, Navbar, NavItem, Grid, Panel} from 'react-bootstrap';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap';
+import { observer } from 'mobx-react';
 
 
-class Home extends Component {
+const Home = observer(class Home extends Component {
   constructor() {
           super();
           this.state = {
@@ -34,17 +35,19 @@ class Home extends Component {
     ]})
   }
   handleAddProject(project){
-    let projects = this.state.projects;
+    let projects = this.props.store.projects;
     projects.push(project);
-    this.setState({projects:projects});
-    console.log(projects);
+    this.props.store.projects = projects;
+    //this.setState({projects:projects});
+    //console.log(projects);
   }
 
   handleDeleteProject(id){
-    let projects = this.state.projects;
+    let projects = this.props.store.projects;
     let index = projects.findIndex(project => project.id === id);
     projects.splice(index, 1);
-    this.setState({projects:projects});
+    this.props.store.projects = projects;
+    //this.setState({projects:projects});
   }
 
   render() {
@@ -65,7 +68,7 @@ class Home extends Component {
         <BrowserRouter>
         <Grid>
           <Panel>
-            <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} />
+            <Projects projects={this.props.store.projects} onDelete={this.handleDeleteProject.bind(this)} />
           </Panel>
           <Panel>
             <AddProject addProject={this.handleAddProject.bind(this)} />
@@ -75,6 +78,6 @@ class Home extends Component {
 
           );
         }
-    }
+    })
 
 export default Home;

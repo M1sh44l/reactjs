@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ProjectItem from './ProjectItem';
+import { observer } from 'mobx-react';
 
-class Projects extends Component {
+
+const Projects = observer(class Projects extends Component {
   deleteProject(id){
     this.props.onDelete(id);
   }
-  
+
   render() {
     let projectItems;
     if(this.props.projects) {
@@ -26,6 +28,6 @@ class Projects extends Component {
       </div>
     );
   }
-}
+})
 
 export default Projects;

@@ -8,9 +8,11 @@ import {LinkContainer} from 'react-router-bootstrap';
 import Home from './Components/Home';
 import API from './Components/API';
 import Posts from './Components/Posts';
+import { observer } from 'mobx-react';
+import Music from './Components/Music';
 
 
-class App extends Component {
+const App = observer(class App extends Component {
   render() {
     const navBar = (
         <Navbar>
@@ -29,6 +31,9 @@ class App extends Component {
             <LinkContainer to="/Posts">
             <NavItem>Posts</NavItem>
             </LinkContainer>
+            <LinkContainer to="/Music">
+            <NavItem>Music</NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar>
     );
@@ -38,13 +43,14 @@ class App extends Component {
           <Grid>
             {navBar}
           </Grid>
-          <Route exact path="/" render={() => <Home />} />
-          <Route exact path="/Api" render={() => <API />} />
+          <Route exact path="/" render={() => <Home store={this.props.store}/>} />
+          <Route exact path="/Api" render={() => <API store={this.props.store}/>} />
           <Route exact path="/Posts" render={() => <Posts />} />
+          <Route exact path="/Music" render={() => <Music store={this.props.store}/>} />
         </Grid>
         </BrowserRouter>
       );
     }
-}
+})
 
 export default App;

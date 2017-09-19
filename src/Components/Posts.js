@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import Checkingbox from './Checkingbox';
 import {Grid, Panel} from 'react-bootstrap';
 import $ from 'jquery';
+import { observer } from 'mobx-react';
 
 
-
-class Posts extends Component {
+const Posts = observer(class Posts extends Component {
   constructor() {
           super();
           this.state = {
@@ -50,6 +50,6 @@ class Posts extends Component {
         </Grid>
           );
         }
-    }
+    })
 
 export default Posts;
