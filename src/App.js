@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
 import $ from 'jquery';
-import Todos from './Components/Todos';
 import {Nav, Navbar, NavItem, Grid} from 'react-bootstrap';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap';
+import { observer } from 'mobx-react';
 import Home from './Components/Home';
 import API from './Components/API';
 import Posts from './Components/Posts';
-import { observer } from 'mobx-react';
 import Music from './Components/Music';
 
 

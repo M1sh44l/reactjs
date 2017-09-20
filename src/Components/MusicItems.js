@@ -9,7 +9,7 @@ const MusicItems = observer(class MusicItems extends Component {
       return (
             <li className="list-group-item list-group-item-info">
               <strong>{this.props.music.name}</strong>:<p>{this.props.music.artist}</p>
-              <img src={this.props.music.image.get(3)['#text']} thumbnail />
+              <img src={this.props.music.image.get(3)['#text']} alt="" thumbnail />
             </li>
           );
         }

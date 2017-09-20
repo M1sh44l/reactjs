@@ -6,6 +6,9 @@ class myStore {
       todos: [],
       projects: [],
       music: [],
+      token: '',
+      username: '',
+      authenticated: false,
     })
   }
 }

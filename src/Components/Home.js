@@ -68,10 +68,10 @@ const Home = observer(class Home extends Component {
         <BrowserRouter>
         <Grid>
           <Panel>
-            <Projects projects={this.props.store.projects} onDelete={this.handleDeleteProject.bind(this)} />
+            <AddProject store={this.props.store} addProject={this.handleAddProject.bind(this)} />
           </Panel>
           <Panel>
-            <AddProject addProject={this.handleAddProject.bind(this)} />
+            <Projects projects={this.props.store.projects} onDelete={this.handleDeleteProject.bind(this)} />
           </Panel>
         </Grid>
         </BrowserRouter>

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import uuid from 'uuid';
 import {Button} from 'react-bootstrap';
 
-
+// this.state.newProject.title
+//this.refs.title.value === this.state.title
+//this.checkDuplicate(this.refs.title.value)
 class AddProject extends Component {
   constructor() {
           super();
@@ -14,9 +16,25 @@ class AddProject extends Component {
   static defaultProps = {
     categories: ["Web Design", "Web Development", "Mobile App",]
   }
+
+checkDuplicate(title) {
+  let result = false;
+  this.props.store.projects.map(
+    project => {
+      if(title === project.title){
+        result = true;
+      }
+    }
+  )
+  return result;
+}
+
   handleSubmit(e){
+    e.preventDefault();
     if (this.refs.title.value === "") {
       alert('Title is required');
+    } else if (this.checkDuplicate(this.refs.title.value)) {
+      alert('Duplicate Title');
     } else {
       this.setState({
         newProject: {
@@ -27,7 +45,7 @@ class AddProject extends Component {
         function(){ this.props.addProject(this.state.newProject);}
     )
     }
-    e.preventDefault();
+
   }
   render() {
     //This below function works as a 'for loop'
