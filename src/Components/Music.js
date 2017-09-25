@@ -3,6 +3,8 @@ import MusicList from './MusicList';
 import {Grid, Panel} from 'react-bootstrap';
 import $ from 'jquery';
 import { observer } from 'mobx-react';
+import auth from './auth';
+import store from '../Store';
 
 
 const Music = observer(class Music extends Component {
@@ -27,6 +29,7 @@ const Music = observer(class Music extends Component {
     if (this.props.store.music.length < 1) {
     this.getMusic();
     }
+    window.store = store
   }
 
   render() {

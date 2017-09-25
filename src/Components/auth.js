@@ -14,6 +14,7 @@ const auth = observer(new class auth {
     this.getToken(username, password)
 
   }
+
   logout(){
     delete localStorage.token
     delete localStorage.username
@@ -32,10 +33,10 @@ const auth = observer(new class auth {
     return !!localStorage
   }
   getToken(username, password){
-    var request = $.ajax({
+    $.ajax({
       type: 'POST',
-      dataType: 'application/json',
-      url: 'http://127.0.0.1:8000/get-token',
+      dataType: 'json',
+      url: 'http://139.59.119.40/api/login/',
       data: {
         username: username,
         password: password,

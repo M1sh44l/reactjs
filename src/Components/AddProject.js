@@ -30,7 +30,6 @@ checkDuplicate(title) {
 }
 
   handleSubmit(e){
-    e.preventDefault();
     if (this.refs.title.value === "") {
       alert('Title is required');
     } else if (this.checkDuplicate(this.refs.title.value)) {
@@ -45,7 +44,7 @@ checkDuplicate(title) {
         function(){ this.props.addProject(this.state.newProject);}
     )
     }
-
+    e.preventDefault();
   }
   render() {
     //This below function works as a 'for loop'
